@@ -22,5 +22,5 @@ class apple():
         self.velY = velY
 
 p1 = personagem(funcoes.sorteio(), funcoes.sorteio(), 20, 20, 0, 0, 0)
-corpo = apple(p1.X - 10, p1.Y - 10, 20, 20, 0, 0)
+corpo = apple(p1.X - 10, p1.Y - 10, 0, 0, 0, 0)
 maca = apple(funcoes.sorteio(), funcoes.sorteio(), 20, 20,  0, 0)

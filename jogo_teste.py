@@ -17,19 +17,23 @@ relogio = pygame.time.Clock()
 def windown():
     screen = pygame.display.set_mode((800, 800),0,32)
     pygame.display.set_caption('Teste1')
-
+    
     screen.fill(cores.Cores['WHITE'])
     pygame.draw.rect(screen, cores.Cores['BLACK'], [obp.p1.X, obp.p1.Y, obp.p1.heigth, obp.p1.width])
-    pygame.draw.rect(screen, cores.Cores['BLACK'], [obp.p1.X - 10, obp.p1.Y, obp.corpo.height, obp.corpo.width])
-    pygame.draw.rect(screen, cores.Cores['RED'], [obp.maca.X, obp.maca.Y, obp.maca.height, obp.maca.width])
-    text = font.render(Textos.Textos['Teste'], True, cores.Cores['BLACK'])
+    if obp.p1.eat != 0:
+        pygame.draw.rect(screen, cores.Cores['BLACK'], [funcoes.mostrarCorpo(), funcoes.mostrarCorpo(), obp.corpo.height, obp.corpo.width])
 
-    #screen.blit(text, [350, 200])
+    pygame.draw.rect(screen, cores.Cores['RED'], [obp.maca.X, obp.maca.Y, obp.maca.height, obp.maca.width])
+    if obp.p1.eat != 0:
+        text = font.render(str(obp.p1.eat), True, cores.Cores['MUSGO'])
+
+        screen.blit(text, [750, 0])
 
     pygame.display.update()
     relogio.tick(10)
-      
-run = True
+
+
+run = True   
 while run == True:
     event = pygame.event.poll()
     
@@ -38,7 +42,7 @@ while run == True:
             run = False
 
     Key = pygame.key.get_pressed()
-    funcoes.colision(Key)
+    funcoes.colision()
     funcoes.funcao_movimento(Key)
     windown()
     obp.p1.X += obp.p1.velX
