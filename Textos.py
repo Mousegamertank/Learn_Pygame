@@ -9,6 +9,8 @@ fonte1 = configuracao_de_texto(None, 55)
 
 # Guardar os textos que será apresentados
 Textos = {
-    'Teste' : 'TESTE1'
+    'Teste' : 'TESTE1',
+    'Win' : 'Congratulation!! You Win!!',
+    'Lose' : 'You Lose!!! '
     }
 
