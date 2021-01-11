@@ -17,7 +17,7 @@ framerate = float(8)
 colisaoo = False
 #GERAR TELA
 def windown():
-    pygame.display.set_caption('Teste1')
+    pygame.display.set_caption('Teste de Reflaxo')
     
     screen.fill(cores.Cores['WHITE'])
     pygame.draw.rect(screen, cores.Cores['BLACK'], [obp.p1.X, obp.p1.Y, obp.p1.heigth, obp.p1.width])
@@ -29,7 +29,6 @@ def windown():
 
     pygame.display.update() 
     relogio.tick(framerate)
-    print(framerate)
 
 run = True   
 while run == True:
