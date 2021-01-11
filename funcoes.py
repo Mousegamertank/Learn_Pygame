@@ -44,18 +44,24 @@ def sorteio():
     x = random.randint(0, (800 - 20) / 20) * 20;    
     return x
 
-def colision():
+def colision(x, colisao):
     if obp.p1.X == obp.maca.X and obp.p1.Y == obp.maca.Y:
+        colisao = True
         obp.maca.X = sorteio()
         obp.maca.Y = sorteio()
         obp.p1.eat += 1
-
+        return colisao        
+       
 def perdeu():
     run = True
     if obp.p1.X < 0 or obp.p1.X > 800 or obp.p1.Y < 0 or obp.p1.Y > 800:
         run = False
     return run
 
-def restart():
-    
+def velocidadeframe(x):
+    y = 0
+    y = (obp.p1.eat) + x
+    return y
 
+
+   

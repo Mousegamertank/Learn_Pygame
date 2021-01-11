@@ -13,6 +13,8 @@ vel_X = 20
 vel_Y = 20
 relogio = pygame.time.Clock()
 screen = pygame.display.set_mode((800, 800),0,32)
+framerate = float(8)
+colisaoo = False
 #GERAR TELA
 def windown():
     pygame.display.set_caption('Teste1')
@@ -25,9 +27,9 @@ def windown():
 
         screen.blit(text, [750, 0])
 
-    pygame.display.update()
-    relogio.tick(10)
-
+    pygame.display.update() 
+    relogio.tick(framerate)
+    print(framerate)
 
 run = True   
 while run == True:
@@ -41,20 +43,24 @@ while run == True:
     #tecla chave sendo pressionada
     Key = pygame.key.get_pressed()
     #colisão de objeto
-    funcoes.colision()
+    colisaoo = funcoes.colision(framerate, colisaoo)
+    #reframe da tela
+    if colisaoo == True:
+        framerate = funcoes.velocidadeframe(framerate)
+        
+    windown()
     #teste de parada do game
     run = funcoes.perdeu()
-    #reframe da tela
-    windown()
     #movimentação
     funcoes.funcao_movimento(Key, font, screen)
     #movimento constante
     obp.p1.X += obp.p1.velX
     obp.p1.Y += obp.p1.velY
+    colisaoo = False
 
 con = font.render('Seu placar foi de: ', True, cores.Cores['PINK'])
 fim = font.render(str(obp.p1.eat), True, cores.Cores['PINK'])
-screen.blit(con, [300, 250])
+screen.blit(con, [250, 350])
 screen.blit(fim, [400, 400])
 pygame.display.update()
 
